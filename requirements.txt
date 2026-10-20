@@ -1,0 +1,4 @@
+Flask
+langchain-classic
+langchain-groq
+gunicorn
