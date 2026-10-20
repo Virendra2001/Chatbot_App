@@ -1,0 +1,101 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My AI Chatbot</title>
+
+    <!-- Connect CSS File -->
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+    <!-- Main Chatbot Container -->
+    <div class="chat-container">
+
+        <!-- Chatbot Heading -->
+        <div class="chat-header">
+
+            <h1>Virendra Chavhan</h1>
+
+            <p>Powered by LangChain and Groq</p>
+
+        </div>
+
+
+        <!-- Chat Messages -->
+        <div class="chat-body">
+
+            {% if messages %}
+
+                {% for message in messages %}
+
+                    <div class="message {{ message.role }}">
+
+                        <strong>
+                            {% if message.role == 'user' %}
+                                You
+                            {% else %}
+                                AI
+                            {% endif %}
+                        </strong>
+
+                        <p>{{ message.text }}</p>
+
+                    </div>
+
+                {% endfor %}
+
+            {% else %}
+
+                <div class="welcome">
+
+                    <h2>Hello! 👋</h2>
+
+                    <p>How can I help you today?</p>
+
+                </div>
+
+            {% endif %}
+
+        </div>
+
+
+        <!-- User Input Form -->
+        <form class="chat-form" method="POST" action="/">
+
+            <input
+                type="text"
+                name="question"
+                placeholder="Type your message..."
+                autocomplete="off"
+                required
+            >
+
+            <button type="submit">Send</button>
+
+        </form>
+
+
+        <!-- Reset Chat Button -->
+        <div class="chat-footer">
+
+            <a href="/reset">New Chat</a>
+
+            <p>Type "stop" or "done" to reset the chat.</p>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
