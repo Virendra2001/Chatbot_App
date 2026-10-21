@@ -18,7 +18,7 @@ app.secret_key = "my_flask_secret_123"
                 # LOAD LLM MODEL
 # ----------------------------------------------------
 
-API_KEY = "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"
+API_KEY = os.getenv("GROQ_API_KEY")
 
 llm_model = ChatGroq(
     model="qwen/qwen3.8-27b",
